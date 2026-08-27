@@ -6,16 +6,28 @@
 }
 
 body {
-    /* Градиентен фон: отляво към отдясно */
     background: linear-gradient(to right, #3F5EFB, #FC466B);
-    color: white; /* Бял текст навсякъде */
+    color: white;
     line-height: 1.6;
     min-height: 100vh;
 }
 
 .hero {
-    text-align: center;
-    padding: 4rem 1rem 2rem;
+    padding: 4rem 2rem 2rem;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.hero-text {
+    text-align: left; 
+    flex: 1;
 }
 
 .hero h1 {
@@ -26,14 +38,22 @@ body {
 
 .hero p {
     font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-/* Flexbox за основния контейнер */
+/* Кръглата снимка */
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 4px solid white; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
 .container {
     display: flex;
-    flex-direction: column; /* На телефон секциите са една под друга */
+    flex-direction: column; 
+    align-items: center; 
     gap: 2rem;
     padding: 2rem;
     max-width: 1000px;
@@ -41,13 +61,47 @@ body {
 }
 
 .api-section {
-    /* Полупрозрачен тъмен фон за секциите, за да изпъква белият текст */
     background: rgba(0, 0, 0, 0.2); 
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    flex: 1; /* Позволява на секциите да растат равномерно */
-    backdrop-filter: blur(5px); /* Ефект на замъглено стъкло */
+    backdrop-filter: blur(5px);
+    width: 100%; 
+    max-width: 800px; 
+}
+
+.quote-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quote-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.section-header h2 {
+    margin-bottom: 0; 
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.icon-logo {
+    width: 40px; 
+    height: auto;
 }
 
 h2 {
@@ -57,7 +111,6 @@ h2 {
     text-align: center;
 }
 
-/* Стилизиране на бутоните */
 button {
     background-color: #9D1ED4;
     color: white;
@@ -69,11 +122,11 @@ button {
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    width: 100%; /* На телефон бутонът заема цялата ширина */
+    width: 100%;
 }
 
 button:hover {
-    background-color: #7b15a6; /* Малко по-тъмно при минаване с мишката */
+    background-color: #7b15a6; 
 }
 
 .github-card {
@@ -97,19 +150,47 @@ button:hover {
     font-weight: bold;
     margin-top: 1rem;
     width: 100%;
+    display: inline-block;
 }
 
 .github-card a:hover {
     background-color: #7b15a6;
 }
 
-/* Responsive дизайн за по-големи екрани (таблети и компютри) */
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row; /* На компютър секциите са една до друга */
+.cursor-container {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-right: 2rem;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.mouse-icon {
+    width: 50px;
+    animation: bounce 2s infinite; 
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse; 
+        text-align: center;
     }
-    
+    .hero-text {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
     button, .github-card a {
-        width: auto; /* Връщаме нормалната ширина на бутоните */
+        width: auto; 
     }
 }
