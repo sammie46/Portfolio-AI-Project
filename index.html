@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <h1>Здравей, аз съм Самира!</h1>
+        <p>За мен: В момента уча киберсигурност. Свободното си време прекарвам в разработването на различни проекти, рисуване и четене на книги.</p>
+    </header>
+    
+    <main class="container">
+    
+        <section class="api-section">
+            <h2>Цитат на деня</h2>
+            <div class="card">
+                <p id="quote-text">Зареждане на цитат...</p>
+                <p id="quote-author"></p>
+                <button id="fetch-quote-btn">Нов цитат</button>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2>Моят GitHub Профил</h2>
+            <div class="card github-card">
+                <img id="gh-avatar" src="" alt="GitHub Avatar" style="display: none; width: 100px; border-radius: 50%;">
+                <h3 id="gh-name">Зареждане...</h3>
+                <p id="gh-repos"></p>
+                <a id="gh-link" href="#" target="_blank" style="display: none;">Виж профила</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
