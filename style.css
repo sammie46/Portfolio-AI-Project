@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Градиентен фон: отляво към отдясно */
+    background: linear-gradient(to right, #3F5EFB, #FC466B);
+    color: white; /* Бял текст навсякъде */
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Flexbox за основния контейнер */
+.container {
+    display: flex;
+    flex-direction: column; /* На телефон секциите са една под друга */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.api-section {
+    /* Полупрозрачен тъмен фон за секциите, за да изпъква белият текст */
+    background: rgba(0, 0, 0, 0.2); 
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    flex: 1; /* Позволява на секциите да растат равномерно */
+    backdrop-filter: blur(5px); /* Ефект на замъглено стъкло */
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* Стилизиране на бутоните */
+button {
+    background-color: #9D1ED4;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%; /* На телефон бутонът заема цялата ширина */
+}
+
+button:hover {
+    background-color: #7b15a6; /* Малко по-тъмно при минаване с мишката */
+}
+
+.github-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.github-card img {
+    margin-bottom: 1rem;
+    border: 3px solid white;
+}
+
+.github-card a {
+    color: white;
+    background-color: #9D1ED4;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.github-card a:hover {
+    background-color: #7b15a6;
+}
+
+/* Responsive дизайн за по-големи екрани (таблети и компютри) */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* На компютър секциите са една до друга */
+    }
+    
+    button, .github-card a {
+        width: auto; /* Връщаме нормалната ширина на бутоните */
+    }
+}
