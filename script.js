@@ -6,37 +6,50 @@ const ghAvatar = document.getElementById('gh-avatar');
 const ghName = document.getElementById('gh-name');
 const ghRepos = document.getElementById('gh-repos');
 const ghLink = document.getElementById('gh-link');
+const ghRepoList = document.getElementById('gh-repo-list'); 
 
 async function fetchGitHubProfile() {
     try {
-        const response = await fetch('https://api.github.com/users/sammie46');
+
+        const profileResponse = await fetch('https://api.github.com/users/sammie46');
+        if (!profileResponse.ok) throw new Error('Грешка при профила');
+        const profileData = await profileResponse.json();
+
+        ghAvatar.src = profileData.avatar_url;
+        ghAvatar.style.display = 'block';
+        ghName.textContent = profileData.name || profileData.login;
+        ghRepos.textContent = `Общо публични репозитории: ${profileData.public_repos}`;
+        ghLink.href = profileData.html_url;
+        ghLink.style.display = 'inline-block';
         
-        if (!response.ok) {
-            throw new Error('Грешка при връзката с GitHub API');
-        }
+        const reposResponse = await fetch('https://api.github.com/users/sammie46/repos?sort=updated');
+        if (!reposResponse.ok) throw new Error('Грешка при изтегляне на проектите');
+        const reposData = await reposResponse.json();
 
-        const data = await response.json();
-
-        ghAvatar.src = data.avatar_url;
-        ghAvatar.style.display = 'block'; 
-
-        ghName.textContent = data.name || data.login;
-        ghRepos.textContent = `Публични репозитории: ${data.public_repos}`;
-
-        ghLink.href = data.html_url;
-        ghLink.style.display = 'inline-block'; 
+        ghRepoList.innerHTML = '<h3>Моите проекти:</h3>';
         
+        const topRepos = reposData.slice(0, 5);
+        topRepos.forEach(repo => {
+
+            const repoDiv = document.createElement('div');
+            repoDiv.className = 'repo-item';
+            repoDiv.innerHTML = `
+                <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
+                <p>${repo.description ? repo.description : 'Няма добавено описание към този проект.'}</p>
+            `;
+            ghRepoList.appendChild(repoDiv);
+        });
+
     } catch (error) {
         console.error(error);
         ghName.textContent = "Неуспешно зареждане на профила.";
-        ghRepos.textContent = "Моля, опитайте по-късно.";
+        ghRepoList.innerHTML = "<p>Грешка при зареждане на проектите.</p>";
     }
 }
 
 fetchGitHubProfile();
 
-
 async function getQuote() {
-    console.log("Бутонът е натиснат! Остава да добавим и тук fetch.");
+    console.log("Бутонът е натиснат!");
 }
 fetchQuoteBtn.addEventListener('click', getQuote);

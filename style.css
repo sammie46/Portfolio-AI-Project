@@ -40,7 +40,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* Кръглата снимка */
 .profile-img {
     width: 200px;
     height: 200px;
@@ -193,4 +192,57 @@ button:hover {
     button, .github-card a {
         width: auto; 
     }
+}
+
+
+.repo-list {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    text-align: left;
+}
+
+.repo-list h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.repo-item {
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 5px solid #9D1ED4;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.repo-item:hover {
+    transform: translateX(10px); 
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.repo-item h4 {
+    margin-bottom: 0.5rem;
+}
+
+.repo-item h4 a {
+    color: white;
+    text-decoration: none;
+    background: none; 
+    padding: 0;
+    width: auto;
+    font-size: 1.1rem;
+}
+
+.repo-item h4 a:hover {
+    color: #FFD700; 
+    background: none;
+}
+
+.repo-item p {
+    font-size: 0.9rem;
+    color: #e0e0e0;
 }
