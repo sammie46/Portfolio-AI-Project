@@ -18,7 +18,7 @@
     </header>
     
     <main class="container">
-        <!-- Секция 1: Цитати -->
+     
         <section class="api-section">
             <h2>Цитат на деня</h2>
             <div class="card quote-card">
@@ -28,26 +28,32 @@
             </div>
         </section>
 
+
         <section class="api-section">
             <div class="section-header">
-                <img src="images/github_logo.png" alt="GitHub Logo" class="icon-logo">
+                <img src="images/github-white-icon.webp" alt="GitHub Logo" class="icon-logo">
                 <h2>Моят GitHub Профил</h2>
             </div>
             <div class="card github-card">
                 <img id="gh-avatar" src="" alt="GitHub Avatar" style="display: none; width: 100px; border-radius: 50%;">
                 <h3 id="gh-name">Зареждане...</h3>
                 <p id="gh-repos"></p>
-                <a id="gh-link" href="#" target="_blank" style="display: none;">Виж профила</a>
+                
+                <div class="link-and-cursor">
+                    <a id="gh-link" href="#" target="_blank" style="display: none;">Виж профила</a>
+                    <img src="images/Mouse-Clicker.png" alt="Mouse Cursor" class="mouse-icon">
+                </div>
                 
                 <div id="gh-repo-list" class="repo-list"></div>
             </div>
         </section>
-
-        <div class="cursor-container">
-            <img src="images/Mouse-Clicker.png" alt="Mouse Cursor" class="mouse-icon">
-        </div>
+        
     </main>
 
     <script src="script.js"></script>
+
+    <footer class="site-footer">
+    <p>&copy; 2026 Самира. Всички права запазени.</p>
+</footer>
 </body>
 </html>

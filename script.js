@@ -50,6 +50,27 @@ async function fetchGitHubProfile() {
 fetchGitHubProfile();
 
 async function getQuote() {
-    console.log("Бутонът е натиснат!");
+    quoteTextElement.textContent = "Зареждане на нов цитат...";
+    quoteAuthorElement.textContent = "";
+
+    try {
+        const response = await fetch('https://dummyjson.com/quotes/random');
+
+        if (!response.ok) {
+            throw new Error('Грешка при изтегляне на цитата');
+        }
+
+        const data = await response.json();
+
+        quoteTextElement.textContent = `"${data.quote}"`;
+        quoteAuthorElement.textContent = `- ${data.author}`;
+    } catch (error) {
+        console.error(error);
+        quoteTextElement.textContent = "Опа! Не успяхме да заредим цитат.";
+        quoteAuthorElement.textContent = "Моля, опитайте отново по-късно.";
+    }
 }
+
 fetchQuoteBtn.addEventListener('click', getQuote);
+
+getQuote();
